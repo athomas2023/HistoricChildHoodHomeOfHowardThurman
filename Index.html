@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity WebGL Game</title>
+    <style>
+        /* Full-page centering */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Centering container */
+        #iframe-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Iframe styling */
+        iframe {
+            border: none;
+            width: 960px;  /* Adjust to your WebGL build width */
+            height: 650px; /* Adjust to your WebGL build height */
+        }
+    </style>
+</head>
+<body>
+    <div id="iframe-container">
+        <iframe src="WebGL_Build/index.html"></iframe>
+    </div>
+</body>
+</html>

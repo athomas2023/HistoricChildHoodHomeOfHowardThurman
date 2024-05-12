@@ -3,36 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unity WebGL Game</title>
+    <title>HCHHT-XR</title>
     <style>
-        /* Full-page centering */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-
-        /* Centering container */
-        #iframe-container {
+        #unlock-section {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            margin-top: 50px;
         }
-
-        /* Iframe styling */
-        iframe {
+        #iframe-container {
+            width: 960px;
+            height: 600px;
             border: none;
-            width: 960px;  /* Adjust to your WebGL build width */
-            height: 650px; /* Adjust to your WebGL build height */
+            display: none; /* Initially hidden */
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Historic Childhood Home of Howard Thurman</h1>
+        <div id="unlock-section">
+            <label for="unlock-code">Enter Unlock Code:</label>
+            <div>
+                <input type="text" id="unlock-code" placeholder="Unlock Code">
+                <button onclick="checkCode()">Enter</button>
+            </div>
+            <p id="status"></p>
+        </div>
+    </header>
     <div id="iframe-container">
         <iframe src="WebGL_Build/index.html"></iframe>
     </div>
+    <footer>
+        Powered by XR Tours by Filmic Interactive Media Services
+    </footer>
+    <script>
+        const codes = {
+            'Sunday': 'EGTtsQG1',
+            'Monday': 'aEhqIqS2',
+            'Tuesday': 'ZUYzyDF3',
+            'Wednesday': 'QzHJCCj4',
+            'Thursday': 'OqjkTeL5',
+            'Friday': 'QXrGjXB6',
+            'Saturday': 'ZlmeefT7'
+        };
+        function checkCode() {
+            const inputCode = document.getElementById('unlock-code').value;
+            const today = new Date();
+            const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+            if (inputCode === codes[dayName]) {
+                document.getElementById('iframe-container').style.display = 'block';
+                document.getElementById('unlock-section').style.display = 'none';
+            } else {
+                document.getElementById('status').textContent = 'Incorrect code';
+            }
+        }
+    </script>
 </body>
 </html>
